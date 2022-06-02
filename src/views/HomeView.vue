@@ -1,6 +1,5 @@
 <script lang="ts">
 export default {
-  name: "Home",
   data() {
     return {
       email: "ofariasr1@gmail.com",
@@ -24,7 +23,7 @@ export default {
       />
     </div>
     <div class="profile-info">
-      <h1><span>Hi, I'm Oscar</span> 👋</h1>
+      <h1><span>Hi, I'm Oscar</span></h1>
       <h2>I'm QA Automation Engineer and Full Stack Developer</h2>
       <ul class="skills-list">
         <li>
@@ -48,7 +47,7 @@ export default {
   </div>
 </template>
 
-<style>
+<style scoped>
 h1 {
   font-size: 3rem;
 }

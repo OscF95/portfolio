@@ -1,15 +1,25 @@
+<script lang="ts">
+import Term from "./components/Term.vue"
+
+export default {
+  components: {
+    Term
+  }
+}
+</script>
+
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+  <Term/>
+  <Term/>
   </div>
 </template>
 
 <style>
-@media (min-width: 1024px) {
   .about {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    flex-direction: column;
   }
-}
 </style>
