@@ -1,16 +1,42 @@
+<script lang="ts">
+import PortfolioCard from "./components/PortfolioCard.vue";
+
+export default {
+  components: {
+    PortfolioCard,
+  },
+};
+</script>
+
 <template>
-  <div class="portfolio">
-    <h1>This is my portfolio page</h1>
-    <p>Here I'm going to put all my projects</p>
-  </div>
+  <main>
+    <h1>My QA automation projects</h1>
+    <div class="portfolio">
+      <PortfolioCard />
+      <PortfolioCard />
+      <PortfolioCard />
+      <PortfolioCard />
+      <PortfolioCard />
+    </div>
+    <h1>My QA automation projects</h1>
+    <div class="portfolio">
+      <PortfolioCard />
+      <PortfolioCard />
+      <PortfolioCard />
+      <PortfolioCard />
+      <PortfolioCard />
+    </div>
+  </main>
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .portfolio {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+.portfolio {
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+main {
+  margin-top: 50px;
 }
 </style>
