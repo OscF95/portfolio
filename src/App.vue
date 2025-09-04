@@ -1,5 +1,7 @@
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   name: "App",
   data() {
     return {
@@ -7,21 +9,23 @@ export default {
     };
   },
   mounted() {
-    this.theme = localStorage.getItem("theme");
-    if (this.theme) {
-      document.documentElement.className = this.theme;
-      document.getElementById("hide-checkbox").checked = false;
+    const theme = localStorage.getItem("theme");
+    if (theme) {
+      this.theme = theme;
+      document.documentElement.className = theme;
+      const hideCheckbox = document.getElementById("hide-checkbox") as HTMLInputElement | null;
+      if (hideCheckbox) hideCheckbox.checked = false;
     }
   },
   methods: {
-    setTheme(event) {
-      event.srcElement.checked
-        ? (document.documentElement.className = "")
-        : (document.documentElement.className = "dark-theme");
+    setTheme(event: Event) {
+      const target = event.target as HTMLInputElement;
+      document.documentElement.className = target.checked ? "" : "dark-theme";
       localStorage.setItem("theme", document.documentElement.className);
+      this.theme = document.documentElement.className;
     },
   },
-};
+});
 </script>
 
 <template>

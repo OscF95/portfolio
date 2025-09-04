@@ -1,5 +1,7 @@
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   data() {
     return {
       email: "ofariasr1@gmail.com",
@@ -10,7 +12,7 @@ export default {
       window.location.href = `mailto:${this.email}`;
     },
   },
-};
+});
 </script>
 
 <template>
