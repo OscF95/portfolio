@@ -24,13 +24,13 @@ export default {
     </div>
     <div class="profile-info">
       <h1><span>Hi, I'm Oscar</span></h1>
-      <h2>I'm QA Automation Engineer and Full Stack Developer</h2>
+      <h2>I'm QA Automation Engineer and Game Developer enthusiast</h2>
       <ul class="skills-list">
         <li>
           📍 Located in Colombia
           <div class="col_flag"></div>
         </li>
-        <li>🎒 QA Automation Engineer at EPAM</li>
+        <li>🎒 Senior QA Automation Engineer at Exadel</li>
       </ul>
       <div class="portfolio-social-media">
         <a
