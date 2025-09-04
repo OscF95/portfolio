@@ -34,7 +34,7 @@ export default defineComponent({
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About Me</RouterLink>
-        <RouterLink to="/portfolio">Portfolio</RouterLink>
+        <RouterLink to="/projects">Projects</RouterLink>
         <RouterLink to="/blog">Blog</RouterLink>
       </nav>
       <div class="wrapper">
