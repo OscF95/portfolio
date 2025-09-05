@@ -22,14 +22,14 @@ export default defineComponent({
       outputs.forEach(output => {
         output.classList.remove('show');
       });
-      
+
       // Show selected output
       const targetOutput = document.getElementById(outputId + '-output');
       if (targetOutput) {
         targetOutput.classList.add('show');
       }
     },
-    
+
     typeCommand() {
       if (this.currentChar < this.commands[this.currentCommand].length) {
         this.typingText += this.commands[this.currentCommand][this.currentChar];
@@ -43,6 +43,16 @@ export default defineComponent({
           setTimeout(() => this.typeCommand(), 1000);
         }, 2000);
       }
+    },
+
+    getAgesOfExperience() {
+      const startYear = 2016;
+      const currentYear = new Date().getFullYear();
+      const currentMonth = new Date().getMonth();
+      if (currentMonth < 12) {
+        return `${currentYear - startYear - 1}+`;
+      }
+      return currentYear - startYear;
     }
   }
 });
@@ -57,7 +67,7 @@ export default defineComponent({
         <div class="terminal-button maximize"></div>
         <div class="terminal-title">oscar@portfolio:~/about</div>
       </div>
-      
+
       <div class="terminal-content">
         <div class="command-line">
           <span class="prompt">~/Documents/portfolio</span>
@@ -66,36 +76,35 @@ export default defineComponent({
           <span>$ </span>
           <span class="command">cat about_me.txt</span>
         </div>
-        
-        <div class="output file-content">
-<span class="comment"># About Oscar - Senior QA Automation Engineer</span>
 
-<span class="highlight">Name:</span> Oscar
-<span class="highlight">Role:</span> Senior QA Automation Engineer & Game Development Enthusiast
-<span class="highlight">Location:</span> Colombia 🇨🇴
-<span class="highlight">Company:</span> Exadel
-<span class="highlight">Experience:</span> 8+ years in Quality Assurance
+        <pre class="output file-content">
+          <span class="comment"># About Oscar - Senior QA Automation Engineer</span>
+          <span class="highlight">Name:</span> Oscar
+          <span class="highlight">Role:</span> Senior QA Automation Engineer & Game Development Enthusiast
+          <span class="highlight">Location:</span> Colombia 🇨🇴
+          <span class="highlight">Company:</span> Exadel
+          <span class="highlight">Experience:</span> {{ getAgesOfExperience() }} years in Quality Assurance
 
-<span class="comment">## Professional Summary</span>
-Hi, I'm Oscar! As a Systems Engineer with over 8 years in quality 
-assurance, I've helped deliver reliable software solutions for 
-international projects. I specialize in building robust test 
-automation frameworks, implementing CI/CD processes, and driving 
-quality initiatives using agile practices.
+          <span class="comment">## Professional Summary</span>
+          Hi, I'm Oscar! As a Systems Engineer with over {{ getAgesOfExperience() }} years in quality
+          assurance, I've helped deliver reliable software solutions for
+          international projects. I specialize in building robust test
+          automation frameworks, implementing CI/CD processes, and driving
+          quality initiatives using agile practices.
 
-<span class="comment">## Current Focus</span>
-- Test automation with JavaScript/TypeScript
-- CI/CD pipeline optimization
-- Game development with Unity & Godot
-- Mentoring junior QA engineers
-- Open source contributions
+          <span class="comment">## Current Focus</span>
+          - Test automation with JavaScript/TypeScript
+          - CI/CD pipeline optimization
+          - Game development with Unity & Godot
+          - Mentoring junior QA engineers
+          - Open source contributions
 
-<span class="comment">## Fun Stats</span>
-- <span class="string">Bugs found:</span> 10,000+
-- <span class="string">Countries worked with:</span> 15+
-- <span class="string">Games created:</span> 5+
-- <span class="string">Coffee cups/day:</span> ∞
-        </div>
+          <span class="comment">## Fun Stats</span>
+          - <span class="string">Bugs found:</span> 10,000+
+          - <span class="string">Countries worked with:</span> 15+
+          - <span class="string">Games created:</span> 5+
+          - <span class="string">Coffee cups/day:</span> ∞
+  </pre>
 
         <div class="command-line">
           <span class="prompt">~/Documents/portfolio</span>
@@ -106,12 +115,12 @@ quality initiatives using agile practices.
 
         <div class="interactive-commands">
           <div class="available-commands"># Try these commands:</div>
-          
+
           <button class="command-button" @click="showOutput('skills')">ls skills/</button>
           <button class="command-button" @click="showOutput('experience')">cat experience.log</button>
           <button class="command-button" @click="showOutput('projects')">find . -name "*.project"</button>
           <button class="command-button" @click="showOutput('contact')">whoami --contact</button>
-          
+
           <div id="skills-output" class="command-output">
             <div class="command-line">
               <span class="prompt">~/Documents/portfolio</span>
@@ -136,22 +145,42 @@ quality initiatives using agile practices.
               <span>$ </span>
               <span class="command">cat experience.log</span>
             </div>
-            <div class="file-content">
-<span class="comment">[2021-Present] Senior QA Automation Engineer @ Exadel</span>
-- Leading automation initiatives for enterprise applications
-- Mentoring team members and driving quality culture
-- International project collaboration
+            <pre class="file-content">
+              <span class="comment">[2023-Present] Senior QA Automation Engineer & Team Lead - Exadel</span>
+              - Leading a combined manual and automation QA team, mentoring and managing workload
+              - Enhancing automation framework with WebdriverIO, Axios, and BDD (Gherkin)
+              - Driving quality culture and continuous testing in Jenkins CI/CD pipelines
 
-<span class="comment">[2018-2021] QA Automation Engineer</span>
-- Developed automation frameworks for web/mobile apps
-- Implemented CI/CD testing processes
-- Cross-functional agile team collaboration
+              <span class="comment">[2022-2023] Test Automation Engineer - Lereta LLC</span>
+              - Migrated automation framework from .NET 4.7 to .NET Core 6
+              - Automated UI and API test cases using Selenium, SpecFlow, and RestSharp with C#
+              - Implemented Azure DevOps pipelines for consistent test execution
 
-<span class="comment">[2015-2018] Junior QA Engineer</span>
-- Started journey in quality assurance
-- Learned testing fundamentals and automation basics
-- Built strong foundation in QA methodologies
-            </div>
+              <span class="comment">[2022] Test Automation Engineer - EPAM Anywhere</span>
+              - Automated web UI test cases with WebdriverIO (TypeScript) and Playwright
+              - Expanded automation coverage to mobile apps with Appium
+              - Generated detailed reporting with Allure for stakeholder visibility
+
+              <span class="comment">[2021-2022] Senior Test Automation Engineer - Overactive (Now part of Perficient)</span>
+              - Built UI, API, and mobile test automation with Cypress, WebdriverIO, and Appium
+              - Designed and executed K6 scripts for performance testing
+              - Integrated automation into Azure DevOps CI/CD workflows
+
+              <span class="comment">[2019-2021] Test Automation Engineer - Globant</span>
+              - Established automation methodologies and frameworks
+              - Automated API and UI testing with Selenium, NUnit, and RestSharp
+              - Applied OOP and design patterns to improve maintainability of test code
+
+              <span class="comment">[2018-2019] Test Automation Engineer - PSL (Now part of Perficient)</span>
+              - Designed automation frameworks for web and mobile apps with Selenium, Appium, and Python
+              - Created test plans and executed functional and regression tests
+              - Integrated automation into Jenkins pipelines and optimized test environments with Docker
+
+              <span class="comment">[2016-2018] Test Automation Engineer - Stefanini</span>
+              - Designed and executed automated UI and mobile tests with Selenium, Appium, and Java
+              - Conducted API testing with SoapUI and improved reliability
+              - Ran JMeter performance testing and delivered reports to guide improvements
+            </pre>
           </div>
 
           <div id="projects-output" class="command-output">
@@ -161,16 +190,16 @@ quality initiatives using agile practices.
               <span>$ </span>
               <span class="command">find . -name "*.project"</span>
             </div>
-            <div class="file-content">
-./automation/selenium-framework.project
-./automation/cypress-dashboard.project
-./gamedev/unity-2d-platformer.project
-./gamedev/godot-rpg.project
-./web/portfolio-website.project
-./tools/test-data-generator.project
+            <pre class="file-content">
+              ./automation/selenium-framework.project
+              ./automation/cypress-dashboard.project
+              ./gamedev/unity-2d-platformer.project
+              ./gamedev/godot-rpg.project
+              ./web/portfolio-website.project
+              ./tools/test-data-generator.project
 
-<span class="comment"># Run 'cd projects && ls -la' to explore more!</span>
-            </div>
+              <span class="comment"># Run 'cd projects && ls -la' to explore more!</span>
+            </pre>
           </div>
 
           <div id="contact-output" class="command-output">
@@ -180,17 +209,17 @@ quality initiatives using agile practices.
               <span>$ </span>
               <span class="command">whoami --contact</span>
             </div>
-            <div class="file-content">
-<span class="highlight">User:</span> oscar
-<span class="highlight">Email:</span> ofariasr1@gmail.com
-<span class="highlight">LinkedIn:</span> /in/oscar-fabian-arias-rodriguez-b02241144
-<span class="highlight">GitHub:</span> /OscF95
-<span class="highlight">Status:</span> Available for collaboration
-<span class="highlight">Timezone:</span> COT (UTC-5)
-<span class="highlight">Languages:</span> Spanish, English
+            <pre class="file-content">
+              <span class="highlight">User:</span> oscar
+              <span class="highlight">Email:</span> ofariasr1@gmail.com
+              <span class="highlight">LinkedIn:</span> /in/oscar-fabian-arias-rodriguez-b02241144
+              <span class="highlight">GitHub:</span> /OscF95
+              <span class="highlight">Status:</span> Available for collaboration
+              <span class="highlight">Timezone:</span> COT (UTC-5)
+              <span class="highlight">Languages:</span> Spanish, English
 
-<span class="comment"># Always happy to connect with fellow developers! 🚀</span>
-            </div>
+              <span class="comment"># Always happy to connect with fellow developers! 🚀</span>
+            </pre>
           </div>
         </div>
       </div>
@@ -234,22 +263,30 @@ quality initiatives using agile practices.
   border-radius: 50%;
 }
 
-.close { background: #ff5f57; }
-.minimize { background: #ffbd2e; }
-.maximize { background: #28ca42; }
+.close {
+  background: #ff5f57;
+}
+
+.minimize {
+  background: #ffbd2e;
+}
+
+.maximize {
+  background: #28ca42;
+}
 
 .terminal-title {
   margin-left: auto;
   margin-right: auto;
   color: #8e8e8e;
-  font-size: 12px;
+  font-size: var(--base-font-size);
 }
 
 .terminal-content {
   padding: 20px;
   background: #000;
   min-height: 500px;
-  font-size: 14px;
+  font-size: var(--base-font-size);
   line-height: 1.6;
   font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
 }
@@ -288,8 +325,16 @@ quality initiatives using agile practices.
 }
 
 @keyframes blink {
-  0%, 50% { border-color: #00bcd4; }
-  51%, 100% { border-color: transparent; }
+
+  0%,
+  50% {
+    border-color: #00bcd4;
+  }
+
+  51%,
+  100% {
+    border-color: transparent;
+  }
 }
 
 .file-content {
@@ -331,7 +376,7 @@ quality initiatives using agile practices.
   border-radius: 4px;
   cursor: pointer;
   font-family: inherit;
-  font-size: 12px;
+  font-size: var(--base-font-size);
   transition: all 0.3s ease;
 }
 
@@ -354,8 +399,15 @@ quality initiatives using agile practices.
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .skills-grid {
@@ -374,9 +426,9 @@ quality initiatives using agile practices.
   .container {
     padding: 20px 20px 20px;
   }
-  
+
   .terminal-content {
-    font-size: 12px;
+    font-size: var(--base-font-size);
     padding: 15px;
   }
 }

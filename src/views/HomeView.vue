@@ -25,8 +25,7 @@ export default defineComponent({
       <h2>Senior QA Automation Engineer and Game Developer enthusiast</h2>
       <ul class="skills-list">
         <li>
-          📍 Located in Colombia
-          <div class="col_flag"></div>
+          📍 Located in Colombia 🇨🇴
         </li>
         <li>🎒 Senior QA Automation Engineer at Exadel</li>
       </ul>
